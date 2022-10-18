@@ -1,71 +1,278 @@
-# template-make README
+# Template Make 通用模板和代码片段
 
-This is the README for your extension "template-make". After writing up a brief description, we recommend including the following sections.
+## 主要功能
 
-## Features
+- 代码片段生成
+- 远程代码模板生成
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+## 迭代计划
 
-For example if there is an image subfolder under your extension project workspace:
+- [ ] 支持更多代码片段
+- [ ] 代码模板支持 `ejs`
+- [ ] 通过 `AST` 语法树写入配置代码
 
-\!\[feature X\]\(images/feature-x.png\)
+## 模板文件使用指南
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+1.  通过 VsCode 安装本插件
+2.  打开 VsCode 命令面板（Mac 快捷键 `Cmd+Shift+P`、Windows 快捷键 `Ctrl+Shift+P`，或通用快捷键 `F1`）
+3.  命令面板内输入 `saveTemplateUrl`，按照提示添加远程模板仓库 http 克隆地址（**注意：不是 Git 仓库地址，而是仓库的 http 克隆地址**），弹出成功则保存成功
+4.  命令面板输入 `updateTemplate`，从远程更新模板到本地，弹出成功则更新成功
+5.  在左侧资源管理面板，选中目标文件夹右键点击，选择弹出面板的 `Create Template`，然后选中一个模板创建，目标文件下出现模板文件则创建成功
 
-## Requirements
+## 代码片段
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+### 导入模块
 
-## Extension Settings
+| Snippets | Content                                          |
+| -------- | ------------------------------------------------ |
+| `im`     | `import packageName`                             |
+| `imp`    | `import name from packageName`                   |
+| `imd`    | `import { name } from packageName `              |
+| `ime`    | `import * as name from packageName `             |
+| `ima`    | `import { name as otherName } from packageName ` |
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+### 导出模块
 
-For example:
+| Snippets | Content                                         |
+| -------- | ----------------------------------------------- |
+| `exp`    | `export default packageName`                    |
+| `exd`    | `export { name } from packageName`              |
+| `exa`    | `export { name as otherName } from packageName` |
 
-This extension contributes the following settings:
+### 解构
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+| Snippets | Content                       |
+| -------- | ----------------------------- |
+| `dob`    | `const { name } = objectName` |
+| `dar`    | `const [ name ] = arrayName`  |
 
-## Known Issues
+### 函数表达式和调试
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+| Snippets | Content                          |
+| -------- | -------------------------------- |
+| `cfu`    | `const functionName = arg => {}` |
+| `clg`    | `console.log('name: ', name)`    |
+| `cer`    | `console.error('name: ', name)`  |
 
-## Release Notes
+### React 常用片段
 
-Users appreciate release notes as you update your extension.
+| Snippets      | Content                                  |
+| ------------- | ---------------------------------------- |
+| `useeffect`   | `useEffect(() => {}, [])`                |
+| `usestate`    | `const [name, setName] = useState()`     |
+| `useref`      | `const ref = useRef()`                   |
+| `usecallback` | `const name = useCallback(() => {}, [])` |
+| `usememo`     | `const name = useMemo(() => {}, [])`     |
+| `usenav`      | `const navigation = useNavigation()`     |
+| `useroute`    | `const { params } = useRoute()`          |
 
-### 1.0.0
+#### `rf`
 
-Initial release of ...
+```ts
+import React from 'react'
 
-### 1.0.1
+const Example = props => {
+  return <div>hello world<div>
+}
 
-Fixed issue #.
+export default Example
+```
 
-### 1.1.0
+#### `rfi`
 
-Added features X, Y, and Z.
+```ts
+import React, { FC } from 'react'
 
----
+interface IProps {}
 
-## Following extension guidelines
+const Example: FC<IProps> = props => {
+  return <div>hello world<div>
+}
 
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
+export default Example
 
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
+```
 
-## Working with Markdown
+#### `rff`
 
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
+```ts
+import React, { forwardRef, useImperativeHandle } from 'react'
 
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
+export interface IExampleRef {}
 
-## For more information
+interface IProps {}
 
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
+const Example: React.ForwardRefRenderFunction<IExampleRef, IProps> = (
+  props,
+  ref,
+) => {
+  useImperativeHandle(ref, () => ({})
 
-**Enjoy!**
+  return <div>hello world</div>
+}
+
+export default forwardRef(Example)
+
+```
+
+### 业务常用片段
+
+#### `columns`
+
+```ts
+const columns: ColumnsType<any> = [
+  { title: "title", dataIndex: "name" },
+  {
+    title: "操作",
+    dataIndex: "action",
+    render: (_, row) => {
+      return (
+        <ActionText.Group>
+          <ActionText status="primary" text="编辑" to="/components" />
+        </ActionText.Group>
+      );
+    },
+  },
+];
+```
+
+#### `usetable`
+
+```ts
+const { tableProps, form, submit, reset, refresh } = useTablePagingGQL({
+  formatParams: (values) => {
+    const { page, ...val } = values;
+    return {
+      input: {
+        ...val,
+        ...page,
+      },
+    };
+  },
+  gql: ExampleDocument,
+  gqlKey: "example",
+});
+```
+
+#### `formsearch`
+
+```ts
+<Form form={form}>
+  <SearchFormLayout.Row>
+    <SearchFormLayout.Col>
+      <Form.Item label="label" name="label">
+        <Input />
+      </Form.Item>
+    </SearchFormLayout.Col>
+    <SearchFormLayout.Col>
+      <Form.Item>
+        <SearchFormLayout.Space>
+          <Button type="primary">搜索</Button>
+          <Button type="default">重置</Button>
+        </SearchFormLayout.Space>
+      </Form.Item>
+    </SearchFormLayout.Col>
+  </SearchFormLayout.Row>
+</Form>
+```
+
+#### `forminput`
+
+```ts
+<Form.Item label="label" name="name">
+  <Input />
+</Form.Item>
+```
+
+#### `formtext`
+
+```ts
+<Form.Item label="label" name="name">
+  <Input.TextArea />
+</Form.Item>
+```
+
+#### `formselect`
+
+```ts
+<Form.Item label="label" name="name">
+  <Select options={[]} />
+</Form.Item>
+```
+
+#### `formasync`
+
+```ts
+<Form.Item label="label" name="label">
+  <AsyncSelect
+    remote={{
+      gqlKey: "example",
+      gql: ExampleDocument,
+    }}
+  />
+</Form.Item>
+```
+
+#### `fromcheck`
+
+```ts
+<Form.Item label="label" name="name" valuePropName="checked">
+  <Checkbox>content</Checkbox>
+</Form.Item>
+```
+
+#### `fromnumber`
+
+```ts
+<Form.Item label="label" name="name">
+  <InputNumber />
+</Form.Item>
+```
+
+#### `formswitch`
+
+```ts
+<Form.Item label="label" name="name" valuePropName="checked">
+  <Switch />
+</Form.Item>
+```
+
+#### `fromradio`
+
+```ts
+<Form.Item label="label" name="name">
+  <Radio.Group>
+    <Radio value="a">item 1</Radio>
+    <Radio value="b">item 2</Radio>
+  </Radio.Group>
+</Form.Item>
+```
+
+#### `formdate`
+
+```ts
+<Form.Item label="label" name="name">
+  <DatePicker />
+</Form.Item>
+```
+
+#### `fromrange`
+
+```ts
+<Form.Item label="label" name="name">
+  <DatePicker.RangePicker />
+</Form.Item>
+```
+
+#### `formbutton`
+
+```ts
+<Form.Item>
+  <Button type="primary" htmlType="submit" onClick={() => ({})}>
+    submit
+  </Button>
+  <Button htmlType="button" onClick={() => ({})}>
+    reset
+  </Button>
+</Form.Item>
+```
