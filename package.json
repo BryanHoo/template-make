@@ -1,0 +1,88 @@
+{
+  "name": "template-make",
+  "displayName": "template make",
+  "description": "通用模板制作插件",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.50.0"
+  },
+  "categories": [
+    "Snippets"
+  ],
+  "license": "MIT",
+  "activationEvents": [
+    "onCommand:template-make.saveTemplateUrl",
+    "onCommand:template-make.updateTemplate",
+    "onCommand:template-make.createTemplate"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "snippets": [
+      {
+        "language": "typescript",
+        "path": "./src/snippets.code-snippets"
+      },
+      {
+        "language": "typescriptreact",
+        "path": "./src/snippets.code-snippets"
+      },
+      {
+        "language": "javascript",
+        "path": "./src/snippets.code-snippets"
+      },
+      {
+        "language": "javascriptreact",
+        "path": "./src/snippets.code-snippets"
+      }
+    ],
+    "commands": [
+      {
+        "command": "template-make.saveTemplateUrl",
+        "title": "Save Template Url"
+      },
+      {
+        "command": "template-make.updateTemplate",
+        "title": "Update Template"
+      },
+      {
+        "command": "template-make.createTemplate",
+        "title": "Create Template"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "template-make.createTemplate",
+          "when": "explorerResourceIsFolder"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "yarn run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "yarn run compile && yarn run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^9.0.13",
+    "@types/git-clone": "^0.2.0",
+    "@types/glob": "^8.0.0",
+    "@types/mocha": "^10.0.0",
+    "@types/node": "16.x",
+    "@types/vscode": "^1.72.0",
+    "@typescript-eslint/eslint-plugin": "^5.38.1",
+    "@typescript-eslint/parser": "^5.38.1",
+    "@vscode/test-electron": "^2.1.5",
+    "eslint": "^8.24.0",
+    "glob": "^8.0.3",
+    "mocha": "^10.0.0",
+    "typescript": "^4.8.4"
+  },
+  "dependencies": {
+    "fs-extra": "^10.1.0",
+    "git-clone": "^0.2.0"
+  }
+}
