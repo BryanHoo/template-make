@@ -24,19 +24,19 @@
     "snippets": [
       {
         "language": "typescript",
-        "path": "./src/snippets.code-snippets"
+        "path": "./out/snippets.code-snippets"
       },
       {
         "language": "typescriptreact",
-        "path": "./src/snippets.code-snippets"
+        "path": "./out/snippets.code-snippets"
       },
       {
         "language": "javascript",
-        "path": "./src/snippets.code-snippets"
+        "path": "./out/snippets.code-snippets"
       },
       {
         "language": "javascriptreact",
-        "path": "./src/snippets.code-snippets"
+        "path": "./out/snippets.code-snippets"
       }
     ],
     "commands": [
@@ -67,8 +67,7 @@
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
     "pretest": "yarn run compile && yarn run lint",
-    "lint": "eslint src --ext ts",
-    "test": "node ./out/test/runTest.js"
+    "lint": "eslint src --ext ts"
   },
   "devDependencies": {
     "@types/fs-extra": "^9.0.13",

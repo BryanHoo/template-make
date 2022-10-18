@@ -3,10 +3,6 @@ import { copy, pathExists, readdir, remove } from "fs-extra";
 import gitClone = require("git-clone/promise");
 import path = require("path");
 
-// 公用模板存储目录
-const templateDir = (context: vscode.ExtensionContext) =>
-  path.join(context.globalStorageUri.fsPath, ".vscode-template-make");
-
 export const getTemplateUrl = (context: vscode.ExtensionContext) => {
   vscode.window
     .showInputBox({
