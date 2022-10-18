@@ -2,7 +2,7 @@
   "name": "template-make",
   "displayName": "template make",
   "description": "通用模板制作插件",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "engines": {
     "vscode": "^1.50.0"
   },
@@ -13,6 +13,7 @@
   "author": "Bryan Hu <hushao599@gmail.com> (https://github.com/BryanHoo)",
   "license": "MIT",
   "publisher": "bryanhu",
+  "icon": "logo.png",
   "activationEvents": [
     "onCommand:template-make.saveTemplateUrl",
     "onCommand:template-make.updateTemplate",
