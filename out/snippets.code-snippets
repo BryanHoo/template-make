@@ -143,7 +143,7 @@
       "<Form form={form}>",
       "  <SearchFormLayout.Row>",
       "    <SearchFormLayout.Col>",
-      "      <Form.Item label=\"${1:label}\" name=\"${1:name}\">",
+      "      <Form.Item label=\"${1:label}\" name=\"${2:name}\">",
       "        <Input />",
       "      </Form.Item>",
       "    </SearchFormLayout.Col>",

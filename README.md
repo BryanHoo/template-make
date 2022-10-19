@@ -247,7 +247,7 @@ const { loading, submit, reset } = useFormFetch({
 </Form.Item>
 ```
 
-#### `fromcheck`
+#### `formcheck`
 
 ```ts
 <Form.Item label="label" name="name" valuePropName="checked">
@@ -255,7 +255,7 @@ const { loading, submit, reset } = useFormFetch({
 </Form.Item>
 ```
 
-#### `fromnumber`
+#### `formnumber`
 
 ```ts
 <Form.Item label="label" name="name">
@@ -271,7 +271,7 @@ const { loading, submit, reset } = useFormFetch({
 </Form.Item>
 ```
 
-#### `fromradio`
+#### `formradio`
 
 ```ts
 <Form.Item label="label" name="name">
@@ -290,7 +290,7 @@ const { loading, submit, reset } = useFormFetch({
 </Form.Item>
 ```
 
-#### `fromrange`
+#### `formrange`
 
 ```ts
 <Form.Item label="label" name="name">
@@ -310,3 +310,17 @@ const { loading, submit, reset } = useFormFetch({
   </Button>
 </Form.Item>
 ```
+
+## 演示
+
+<div>
+<video controls="" preload="none" poster="代码模板">
+      <source src="./assets/a.mp4" type="video/mp4">
+</videos>
+</div>
+
+<div>
+<video controls="" preload="none" poster="代码片段">
+      <source src="./assets/b.mp4" type="video/mp4">
+</videos>
+</div>
