@@ -310,9 +310,3 @@ const { loading, submit, reset } = useFormFetch({
   </Button>
 </Form.Item>
 ```
-
-## 演示
-
-![](./assets/a.gif)
-
-![](./assets/b.gif)
