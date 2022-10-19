@@ -74,7 +74,7 @@
 | `useroute`      | `const { params } = useRoute()`          |
 | `usehistory`    | `const history = useHistory()`           |
 | `uselocation`   | `const { pathname } = useLocation()`     |
-| `useform`       | `const [ form ] = useForm()`             |
+| `useform`       | `const [ form ] = Form.useForm()`        |
 
 #### `rf`
 

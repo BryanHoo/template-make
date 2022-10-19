@@ -350,7 +350,7 @@
   },
   "useForm": {
     "prefix": "useform",
-    "body": ["const [ form ] = useForm()"],
+    "body": ["const [ form ] = Form.useForm()"],
     "description": "useForm"
   },
   "useLocation": {
