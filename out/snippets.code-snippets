@@ -90,7 +90,7 @@
       "import React from 'react'",
       "",
       "const ${1/(.*)/${1:/capitalize}/} = props => {",
-      "  return <div>hello world<div>",
+      "  return <div>hello world</div>",
       "}",
       "",
       "export default ${1/(.*)/${1:/capitalize}/}",
@@ -106,7 +106,7 @@
       "interface IProps {}",
       "",
       "const ${1/(.*)/${1:/capitalize}/}: FC<IProps> = props => {",
-      "  return <div>hello world<div>",
+      "  return <div>hello world</div>",
       "}",
       "",
       "export default ${1/(.*)/${1:/capitalize}/}",
@@ -280,7 +280,7 @@
       "  {",
       "    title: '操作',",
       "    dataIndex: 'action',",
-      "    render: (_, row) => {",
+      "    render: (value, row) => {",
       "      return (",
       "        <ActionText.Group>",
       "          <ActionText status=\"primary\" text=\"编辑\" to=\"/components\" />",
@@ -292,29 +292,71 @@
     ],
     "description": "表格配置"
   },
-  "创建 antd 表格数据请求": {
-    "prefix": "usetable",
+  "useTablePagingGQL": {
+    "prefix": "usetablepagegql",
     "body": [
-      "  const { tableProps, form, submit, reset, refresh } = useTablePagingGQL({",
-      "    formatParams: values => {",
-      "      const { page, ...val } = values",
-      "      return {",
-      "        input: {",
-      "          ...val,",
-      "          ...page,",
-      "        },",
-      "      }",
-      "    },",
-      "    gql: ${1/(.*)/${1:/capitalize}/}Document,",
-      "    gqlKey: '${1}',",
-      "  })"
+      "const { tableProps, form, submit, reset, refresh } = useTablePagingGQL({",
+      "  // TODO: 修改 api 访问接口",
+      "  gql: ${1:gql},",
+      "  gqlKey: 'Page',",
+      "  formatParams: values => { return values },",
+      "})"
     ],
-    "description": "分页表格数据请求"
+    "description": "分页表格"
+  },
+  "useFormFetch": {
+    "prefix": "useformfetch",
+    "body": [
+      "const { loading, submit, reset } = useFormFetch({",
+      "  form,",
+      "  request,",
+      "  formValuesTypeMap: {},",
+      "  resetFieldsIgnores: [],",
+      "})"
+    ],
+    "description": "带表单的请求"
+  },
+  "useTableListGraphQL": {
+    "prefix": "usetablegql",
+    "body": [
+      " const { tableProps, onSubmit, onReset } = useTableListGraphQL({",
+      "  gql: ${1:gql},",
+      "  gqlDataField: '${2}',",
+      "  gqlBuildParams: useTableListGraphQL.gqlBuildParams('input'),",
+      "  form,",
+      "})"
+    ],
+    "description": "不分页表格"
+  },
+  "toolbar": {
+    "prefix": "toolbar",
+    "body": [
+      "<SearchFormLayout.Space>",
+      "  <Button type='primary'>submit1</Button>",
+      "  <Button>submit2</Button>",
+      "</SearchFormLayout.Space>"
+    ],
+    "description": "列表底部工具按钮"
   },
   "useNav": {
-    "prefix": "usenav",
+    "prefix": "usenavigation",
     "body": ["const navigation = useNavigation()"],
     "description": "useNavigation"
+  },
+  "useHistory": {
+    "prefix": "usehistory",
+    "body": ["const history = useHistory()"],
+    "description": "useHistory"
+  },
+  "useForm": {
+    "prefix": "useform",
+    "body": ["const [ form ] = useForm()"],
+    "description": "useForm"
+  },
+  "useLocation": {
+    "prefix": "uselocation",
+    "body": ["const { pathname } = useLocation()"],
+    "description": "useLocation"
   },
   "useRoute": {
     "prefix": "useroute",

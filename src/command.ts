@@ -1,7 +1,17 @@
 import * as vscode from "vscode";
-import { copy, pathExists, readdir, remove } from "fs-extra";
+import {
+  copy,
+  fstat,
+  fstatSync,
+  lstat,
+  lstatSync,
+  pathExists,
+  readdir,
+  remove,
+} from "fs-extra";
 import gitClone = require("git-clone/promise");
 import path = require("path");
+import fs = require("fs");
 
 export const getTemplateUrl = (context: vscode.ExtensionContext) => {
   vscode.window
@@ -42,9 +52,7 @@ export const pullTemplate = async (value: string, templateUri: string) => {
 export const createTemplate = async (uri: any, templateUri: string) => {
   try {
     let templatePaths = await readdir(templateUri);
-    templatePaths = templatePaths.filter(
-      (item) => !/(^|\/)\.[^/.]/g.test(item)
-    );
+    templatePaths = templatePaths.filter((item) => !/\./g.test(item));
     const templateName = await vscode.window.showQuickPick(templatePaths, {
       placeHolder: "选择一个模板",
     });

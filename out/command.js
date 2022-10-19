@@ -46,7 +46,7 @@ exports.pullTemplate = pullTemplate;
 const createTemplate = async (uri, templateUri) => {
     try {
         let templatePaths = await (0, fs_extra_1.readdir)(templateUri);
-        templatePaths = templatePaths.filter((item) => !/(^|\/)\.[^/.]/g.test(item));
+        templatePaths = templatePaths.filter((item) => !/\./g.test(item));
         const templateName = await vscode.window.showQuickPick(templatePaths, {
             placeHolder: "选择一个模板",
         });
