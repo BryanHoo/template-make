@@ -313,14 +313,6 @@ const { loading, submit, reset } = useFormFetch({
 
 ## 演示
 
-<div>
-<video controls="" preload="none" poster="代码模板">
-      <source src="./assets/a.mp4" type="video/mp4">
-</videos>
-</div>
+![](./assets/a.gif)
 
-<div>
-<video controls="" preload="none" poster="代码片段">
-      <source src="./assets/b.mp4" type="video/mp4">
-</videos>
-</div>
+![](./assets/b.gif)
