@@ -1,17 +1,7 @@
 import * as vscode from "vscode";
-import {
-  copy,
-  fstat,
-  fstatSync,
-  lstat,
-  lstatSync,
-  pathExists,
-  readdir,
-  remove,
-} from "fs-extra";
+import { copy, pathExists, readdir, remove } from "fs-extra";
 import gitClone = require("git-clone/promise");
 import path = require("path");
-import fs = require("fs");
 
 export const getTemplateUrl = (context: vscode.ExtensionContext) => {
   vscode.window
