@@ -127,7 +127,7 @@
       "  props,",
       "  ref,",
       ") => {",
-      "  useImperativeHandle(ref, () => ({})",
+      "  useImperativeHandle(ref, () => ({}))",
       "",
       "  return <div>hello world</div>",
       "}",
@@ -350,7 +350,7 @@
   },
   "useForm": {
     "prefix": "useform",
-    "body": ["const [ form ] = Form.useForm()"],
+    "body": ["const [form] = Form.useForm()"],
     "description": "useForm"
   },
   "useLocation": {

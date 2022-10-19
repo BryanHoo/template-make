@@ -2,7 +2,7 @@
   "name": "template-make",
   "displayName": "template make",
   "description": "通用模板制作插件",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "engines": {
     "vscode": "^1.50.0"
   },
