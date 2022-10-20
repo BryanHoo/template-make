@@ -56,12 +56,12 @@
   },
   "consoleLog": {
     "prefix": "clg",
-    "body": ["console.log('${1:label}: ', ${2:variableName})"],
+    "body": ["console.log('${1:variableName}: ', ${1:variableName})"],
     "description": "console.log"
   },
   "consoleError": {
     "prefix": "cer",
-    "body": ["console.error('${1:label}: ', ${2:variableName})"],
+    "body": ["console.error('${1:variableName}: ', ${1:variableName})"],
     "description": "console.error"
   },
   "useeffect": {
